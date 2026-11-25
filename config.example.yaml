@@ -1,0 +1,45 @@
+# Configuración personal. Copia este archivo como config.yaml (o usa /setup en Claude Code).
+# Todo lo que no pongas aquí tiene un valor razonable por defecto.
+
+perfil:
+  titulo: Mi entreno               # encabezado de tu página
+  zona_horaria: America/Mexico_City
+  edad: 30
+  fc_max: 190                      # opcional: si no la sabes, se usa 220 - edad (y el reloj la corrige solo)
+  # fc_max_piso: 185               # opcional
+  # fc_max_correa_desde: 2026-10-26  # opcional: desde cuándo usas correa de pecho en tus sesiones intensas
+
+corrida:
+  nivel: intermedio                # novato | intermedio | corredor
+  intensidad: z2_poca_z3           # solo_z2 | z2_poca_z3 | calidad
+  #   solo_z2      -> todo en zona 2 (ideal si ya haces tu zona 3-4 en HIIT, CrossFit, etc.)
+  #   z2_poca_z3   -> zona 2 con unos picos opcionales de zona 3 en los bloques 2 y 3
+  #   calidad      -> zona 2 + 1 sesión de calidad por semana + la larga (para corredores)
+  calidad_tipos: []                # solo si intensidad = calidad; de: tempo_z3, threshold, intervalos, progresivo, fartlek
+  variada: true                    # true = una de tus 3 corridas es "variada" (espiga, pirámide, escalera...) en vez de la Z2 #2
+  #   Con calidad y calidad_tipos vacío rotan los 5 tipos. En las semanas de descarga todo es continuo.
+  caminatas: false                 # true = sesiones de trote/caminata (si aún no corres 20' seguidos)
+  inicio: 2026-12-07               # el lunes en que empieza el plan
+  semanas: 12
+  base_min: {z2: 20, larga: 40}    # minutos con los que arrancas (lo que corres hoy cómodo, sin pasarte)
+  semanas_repetidas: []            # semanas del plan que repetiste, p. ej. [3]
+  pruebas: []                      # resultados de pruebas de bloques anteriores; /ajustar los agrega solo
+  #   Ejemplo: [{fecha: 2027-02-26, tipo: fc_fija, valor: 462}]  (tipo: fc_fija | trote_continuo | 5k;
+  #   valor: ritmo s/km a FC fija, % de trote continuo o segundos de los 5 km). Así la próxima prueba se compara con esta.
+  carreras: []                     # fechas de carreras pasadas (AAAA-MM-DD) que Garmin no marcó como Carrera
+  #   Las nuevas se detectan solas si en Garmin marcas la actividad como Carrera o su nombre dice carrera, 5k, 10k...
+
+actividades:
+  # Máximo 4 categorías. `tipos` son los tipos de actividad de Garmin; `intensa: true` marca el día como
+  # ocupado y cuenta para medir tu FC máx con correa. `icono` es opcional (correr, medalla, mancuerna, rayo, bici, nadar,
+  # caminar, yoga, punto); si falta se elige por el primer tipo. Si omites `categorias`, se usan: fuerza, hiit, cardio y movilidad.
+  categorias:
+    - {id: fuerza, nombre: Fuerza, letra: F, tipos: [strength_training]}
+    - {id: hiit, nombre: HIIT, letra: H, tipos: [hiit], intensa: true}
+  dias_pierna: [lun]               # días en que entrenas pierna: el día siguiente evita la larga
+
+inbody: false                      # true si tienes plan/inbody.json con mediciones
+
+# umbrales:                        # opcional, para afinar la recuperación
+#   esfuerzo_duro: 8               # esfuerzo (1–10) desde el cual ayer cuenta como día duro
+#   sleep_min_hours: 6.5
