@@ -38,6 +38,7 @@ actividades:
     - {id: hiit, nombre: HIIT, letra: H, tipos: [hiit], intensa: true}
   dias_pierna: [lun]               # días en que entrenas pierna: el día siguiente evita la larga
 
+# idioma: en                      # es | en (sin esta línea, español)
 inbody: false                      # true si tienes plan/inbody.json con mediciones
 
 # umbrales:                        # opcional, para afinar la recuperación
